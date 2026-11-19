@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AirFry Chart — Exact Air Fryer Times & Temperatures</title>
-<meta name="description" content="The ultimate searchable air fryer cooking times and temperature chart. Exact temps, times, and tips for chicken, vegetables, frozen foods, seafood, and more.">
+<title>AirFry Chart — Exact Air Fryer Times & Temperatures (50+ Foods)</title>
+<meta name="description" content="The ultimate searchable air fryer cooking times and temperature chart. Exact temps, times, and tips for 50+ foods including chicken, vegetables, frozen foods, seafood, beef, and more.">
 <meta property="og:title" content="AirFry Chart — Exact Air Fryer Times & Temps">
-<meta property="og:description" content="Never guess again. Searchable chart with exact air fryer times and temperatures for 40+ foods.">
+<meta property="og:description" content="Searchable chart with exact air fryer times and temperatures for 50+ foods. Never guess again.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dust2ash7.github.io/airfry-chart/">
 <link rel="canonical" href="https://dust2ash7.github.io/airfry-chart/">
@@ -43,7 +43,7 @@
 <header>
   <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Crispy air fryer chicken wings and vegetables">
   <h1>AirFry <span>Chart</span></h1>
-  <p class="subtitle">Exact air fryer times & temperatures for 40+ foods. Never guess again.</p>
+  <p class="subtitle">Exact air fryer times & temperatures for 50+ foods. Never guess again.</p>
 </header>
 
 <nav>
@@ -53,7 +53,6 @@
 </nav>
 
 <div class="container">
-  <!-- AdSense placeholder: Replace with your ad unit code after approval -->
   <div class="ad-slot">Advertisement</div>
 
   <div class="search-box">
@@ -95,8 +94,10 @@ const foods = [
   { name: "Chicken Breast (boneless)", temp: "375°F", time: "15–20 min", notes: "Flip halfway • 165°F", cat: "chicken" },
   { name: "Chicken Wings", temp: "400°F", time: "18–26 min", notes: "Shake twice • Pat dry first", cat: "chicken" },
   { name: "Chicken Thighs (bone-in)", temp: "380°F", time: "22–26 min", notes: "Flip halfway", cat: "chicken" },
+  { name: "Chicken Thighs (boneless)", temp: "380°F", time: "16–20 min", notes: "Flip halfway", cat: "chicken" },
   { name: "Chicken Tenders", temp: "375–400°F", time: "10–14 min", notes: "Flip halfway", cat: "chicken" },
   { name: "Chicken Drumsticks", temp: "380°F", time: "20–25 min", notes: "Flip halfway", cat: "chicken" },
+  { name: "Chicken Leg Quarters", temp: "380°F", time: "25–30 min", notes: "Flip halfway", cat: "chicken" },
   { name: "Broccoli Florets", temp: "375–400°F", time: "8–12 min", notes: "Toss with oil, shake halfway", cat: "veggies" },
   { name: "Brussels Sprouts", temp: "375°F", time: "12–18 min", notes: "Halve them", cat: "veggies" },
   { name: "Asparagus", temp: "400°F", time: "6–9 min", notes: "Toss with oil", cat: "veggies" },
@@ -104,23 +105,37 @@ const foods = [
   { name: "Cauliflower Florets", temp: "375°F", time: "10–15 min", notes: "Toss with spices", cat: "veggies" },
   { name: "Green Beans", temp: "375–400°F", time: "8–12 min", notes: "Shake halfway", cat: "veggies" },
   { name: "Zucchini Slices", temp: "400°F", time: "8–12 min", notes: "Light oil", cat: "veggies" },
+  { name: "Carrots (sliced)", temp: "380°F", time: "12–15 min", notes: "Even thickness", cat: "veggies" },
+  { name: "Mushrooms", temp: "380°F", time: "8–10 min", notes: "Season after", cat: "veggies" },
+  { name: "Bell Pepper Strips", temp: "380°F", time: "8–10 min", notes: "Great for fajitas", cat: "veggies" },
+  { name: "Baby Potatoes", temp: "400°F", time: "15–20 min", notes: "Halve, shake", cat: "veggies" },
+  { name: "Potato Wedges", temp: "400°F", time: "18–22 min", notes: "Soak & dry first", cat: "veggies" },
   { name: "Frozen French Fries", temp: "400°F", time: "12–18 min", notes: "Shake every 5 min", cat: "frozen" },
   { name: "Frozen Chicken Nuggets", temp: "400°F", time: "10–12 min", notes: "Shake halfway", cat: "frozen" },
   { name: "Frozen Mozzarella Sticks", temp: "380–400°F", time: "6–8 min", notes: "Watch carefully", cat: "frozen" },
   { name: "Frozen Onion Rings", temp: "380°F", time: "8–10 min", notes: "Shake halfway", cat: "frozen" },
+  { name: "Frozen Tater Tots", temp: "400°F", time: "12–15 min", notes: "Shake halfway", cat: "frozen" },
+  { name: "Frozen Fish Sticks", temp: "400°F", time: "10–12 min", notes: "Shake halfway", cat: "frozen" },
+  { name: "Frozen Pizza Rolls", temp: "380°F", time: "8–10 min", notes: "Check early", cat: "frozen" },
   { name: "Salmon Fillet", temp: "380–400°F", time: "8–12 min", notes: "No flip • 145°F", cat: "seafood" },
   { name: "Shrimp", temp: "400°F", time: "5–8 min", notes: "Shake once", cat: "seafood" },
   { name: "Cod or White Fish", temp: "380°F", time: "8–12 min", notes: "Check early", cat: "seafood" },
+  { name: "Tilapia", temp: "400°F", time: "8–10 min", notes: "Light oil", cat: "seafood" },
+  { name: "Scallops", temp: "400°F", time: "6–8 min", notes: "Don't overcook", cat: "seafood" },
   { name: "Steak (1-inch)", temp: "400°F", time: "8–14 min", notes: "Flip halfway • Rest 5 min", cat: "beef" },
   { name: "Steak Bites", temp: "400°F", time: "6–10 min", notes: "Shake halfway", cat: "beef" },
   { name: "Burgers", temp: "370–375°F", time: "10–14 min", notes: "Flip halfway", cat: "beef" },
+  { name: "Meatballs", temp: "380°F", time: "10–12 min", notes: "Shake halfway", cat: "beef" },
   { name: "Bacon", temp: "350–400°F", time: "7–10 min", notes: "No flip needed", cat: "pork" },
   { name: "Pork Chops (1-inch)", temp: "380–400°F", time: "12–16 min", notes: "Flip halfway • 145°F", cat: "pork" },
   { name: "Sausage Links", temp: "380°F", time: "10–14 min", notes: "Shake halfway", cat: "pork" },
+  { name: "Pork Tenderloin Medallions", temp: "400°F", time: "10–12 min", notes: "Rest after", cat: "pork" },
   { name: "Baked Potato", temp: "400°F", time: "35–45 min", notes: "Pierce skin", cat: "veggies" },
   { name: "Hard-Boiled Eggs", temp: "270°F", time: "15–17 min", notes: "Ice bath after", cat: "other" },
   { name: "Tofu Cubes", temp: "400°F", time: "12–15 min", notes: "Press first", cat: "other" },
-  { name: "Chickpeas (canned)", temp: "400°F", time: "12–18 min", notes: "Dry well, shake", cat: "other" }
+  { name: "Chickpeas (canned)", temp: "400°F", time: "12–18 min", notes: "Dry well, shake", cat: "other" },
+  { name: "Garlic Bread", temp: "360°F", time: "4–6 min", notes: "Watch carefully", cat: "other" },
+  { name: "Reheating Pizza", temp: "350°F", time: "3–5 min", notes: "Crisp bottom", cat: "other" }
 ];
 
 const tbody = document.querySelector("#foodTable tbody");
