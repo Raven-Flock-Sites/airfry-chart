@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dust2ash7.github.io/airfry-chart/sitemap.xml

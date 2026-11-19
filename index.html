@@ -3,140 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AirFry Chart — Exact Air Fryer Times & Temps</title>
-<meta name="description" content="The ultimate air fryer cooking times and temperature chart. Exact temps, times, and tips for chicken, vegetables, frozen foods, and more.">
+<title>AirFry Chart — Exact Air Fryer Times & Temperatures</title>
+<meta name="description" content="The ultimate searchable air fryer cooking times and temperature chart. Exact temps, times, and tips for chicken, vegetables, frozen foods, seafood, and more.">
+<meta property="og:title" content="AirFry Chart — Exact Air Fryer Times & Temps">
+<meta property="og:description" content="Never guess again. Searchable chart with exact air fryer times and temperatures for 40+ foods.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dust2ash7.github.io/airfry-chart/">
+<link rel="canonical" href="https://dust2ash7.github.io/airfry-chart/">
 <style>
-  :root {
-    --bg: #0f1115;
-    --card: #1a1d24;
-    --accent: #ff6b35;
-    --accent2: #ffd166;
-    --text: #f0f2f5;
-    --muted: #9aa0a6;
-    --border: #2a2e36;
-  }
+  :root { --bg: #0f1115; --card: #1a1d24; --accent: #ff6b35; --accent2: #ffd166; --text: #f0f2f5; --muted: #9aa0a6; --border: #2a2e36; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
-  header {
-    background: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
-    padding: 2rem 1.5rem;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
-  header img {
-    max-width: 100%;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 16px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { background: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%); padding: 2rem 1.5rem; text-align: center; border-bottom: 1px solid var(--border); }
+  header img { max-width: 100%; height: 280px; object-fit: cover; border-radius: 16px; margin-bottom: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
   h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; }
   h1 span { color: var(--accent); }
   .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1rem;
-    background: var(--card);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    border-bottom: 1px solid var(--border);
-  }
+  nav { display: flex; justify-content: center; gap: 1.5rem; padding: 1rem; background: var(--card); position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
   nav a { color: var(--text); text-decoration: none; font-weight: 600; }
-  nav a:hover { color: var(--accent); }
+  nav a:hover, nav a.active { color: var(--accent); }
   .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
-  .search-box {
-    margin: 2rem 0;
-    display: flex;
-    gap: 0.5rem;
-  }
-  .search-box input {
-    flex: 1;
-    padding: 0.9rem 1.2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    font-size: 1rem;
-  }
+  .ad-slot { background: #22262e; border: 1px dashed var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; margin: 1.5rem 0; color: var(--muted); font-size: 0.9rem; }
+  .search-box { margin: 2rem 0; display: flex; gap: 0.5rem; }
+  .search-box input { flex: 1; padding: 0.9rem 1.2rem; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 1rem; }
   .search-box input:focus { outline: 2px solid var(--accent); }
-  .tabs {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-  .tab {
-    padding: 0.6rem 1.2rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 600;
-  }
+  .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tab { padding: 0.6rem 1.2rem; background: var(--card); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; font-weight: 600; }
   .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--card);
-    border-radius: 16px;
-    overflow: hidden;
-  }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 16px; overflow: hidden; }
   th, td { padding: 1rem 1.2rem; text-align: left; }
   th { background: #22262e; font-weight: 700; color: var(--accent2); }
   tr:nth-child(even) { background: rgba(255,255,255,0.02); }
   tr:hover { background: rgba(255,107,53,0.08); }
-  .tips {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .tip-card {
-    background: var(--card);
-    padding: 1.5rem;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-  }
-  .tip-card h3 { color: var(--accent); margin-bottom: 0.5rem; }
-  footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-    margin-top: 3rem;
-  }
-  @media (max-width: 640px) {
-    h1 { font-size: 1.8rem; }
-    header img { height: 180px; }
-    th, td { padding: 0.7rem; font-size: 0.9rem; }
-  }
+  footer { text-align: center; padding: 2rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 3rem; }
+  @media (max-width: 640px) { h1 { font-size: 1.8rem; } header img { height: 180px; } th, td { padding: 0.7rem; font-size: 0.9rem; } }
 </style>
 </head>
 <body>
 <header>
   <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Crispy air fryer chicken wings and vegetables">
   <h1>AirFry <span>Chart</span></h1>
-  <p class="subtitle">Exact air fryer times & temperatures for 50+ foods. Never guess again — chicken, veggies, frozen favorites, and more.</p>
+  <p class="subtitle">Exact air fryer times & temperatures for 40+ foods. Never guess again.</p>
 </header>
 
 <nav>
-  <a href="#chart">Chart</a>
-  <a href="#tips">Tips</a>
-  <a href="#recipes">Quick Recipes</a>
+  <a href="index.html" class="active">Chart</a>
+  <a href="recipes.html">Recipes</a>
+  <a href="tips.html">Tips & FAQ</a>
 </nav>
 
-<div class="container" id="chart">
+<div class="container">
+  <!-- AdSense placeholder: Replace with your ad unit code after approval -->
+  <div class="ad-slot">Advertisement</div>
+
   <div class="search-box">
-    <input type="text" id="search" placeholder="Search foods... (chicken, broccoli, fries, salmon...)">
+    <input type="text" id="search" placeholder="Search foods... (chicken, broccoli, fries, salmon, steak...)">
   </div>
   <div class="tabs" id="tabs">
     <button class="tab active" data-cat="all">All</button>
@@ -144,6 +65,8 @@
     <button class="tab" data-cat="veggies">Veggies</button>
     <button class="tab" data-cat="frozen">Frozen</button>
     <button class="tab" data-cat="seafood">Seafood</button>
+    <button class="tab" data-cat="beef">Beef</button>
+    <button class="tab" data-cat="pork">Pork</button>
     <button class="tab" data-cat="other">Other</button>
   </div>
 
@@ -158,73 +81,46 @@
     </thead>
     <tbody></tbody>
   </table>
-</div>
 
-<div class="container" id="tips">
-  <h2 style="margin-bottom:1.5rem; font-size:1.8rem;">Pro Tips for Perfect Results</h2>
-  <div class="tips">
-    <div class="tip-card">
-      <h3>Preheat Always</h3>
-      <p>Give your air fryer 2–3 minutes to preheat. Cold start = uneven cooking.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Don't Crowd the Basket</h3>
-      <p>Single layer is best. Overcrowding steams food instead of crisping it. Shake halfway.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Light Oil Spray</h3>
-      <p>A light mist of oil (avocado or olive) makes the biggest difference for crispiness.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Check Early</h3>
-      <p>Every air fryer runs differently. Start checking 2–3 minutes before the listed time.</p>
-    </div>
-  </div>
-</div>
-
-<div class="container" id="recipes">
-  <h2 style="margin-bottom:1.5rem; font-size:1.8rem;">Quick Wins</h2>
-  <div class="tips">
-    <div class="tip-card">
-      <h3>Crispy Wings</h3>
-      <p>Pat dry, season generously, 400°F for 22–26 min. Shake twice. Sauce after cooking.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Perfect Salmon</h3>
-      <p>380–400°F for 8–12 min. Skin side down. No flip needed. Internal 145°F.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Frozen Fries</h3>
-      <p>400°F for 12–18 min. Shake every 5 minutes. Better than the oven every time.</p>
-    </div>
-  </div>
+  <div class="ad-slot" style="margin-top:2rem;">Advertisement</div>
 </div>
 
 <footer>
-  <p>AirFry Chart — Your go-to air fryer reference. Times are starting points; always use a thermometer for meat.</p>
-  <p style="margin-top:0.5rem; font-size:0.9rem;">Built as a niche site example. Host on GitHub Pages for free.</p>
+  <p>AirFry Chart — Exact times & temps. Always use a meat thermometer. Times are starting points for a preheated air fryer.</p>
+  <p style="margin-top:0.5rem;"><a href="tips.html" style="color:var(--accent);">Tips</a> · <a href="recipes.html" style="color:var(--accent);">Recipes</a></p>
 </footer>
 
 <script>
 const foods = [
-  { name: "Chicken Breast (boneless)", temp: "375°F", time: "15–20 min", notes: "Flip halfway • 165°F internal", cat: "chicken" },
-  { name: "Chicken Wings", temp: "400°F", time: "18–26 min", notes: "Shake twice", cat: "chicken" },
+  { name: "Chicken Breast (boneless)", temp: "375°F", time: "15–20 min", notes: "Flip halfway • 165°F", cat: "chicken" },
+  { name: "Chicken Wings", temp: "400°F", time: "18–26 min", notes: "Shake twice • Pat dry first", cat: "chicken" },
   { name: "Chicken Thighs (bone-in)", temp: "380°F", time: "22–26 min", notes: "Flip halfway", cat: "chicken" },
   { name: "Chicken Tenders", temp: "375–400°F", time: "10–14 min", notes: "Flip halfway", cat: "chicken" },
+  { name: "Chicken Drumsticks", temp: "380°F", time: "20–25 min", notes: "Flip halfway", cat: "chicken" },
   { name: "Broccoli Florets", temp: "375–400°F", time: "8–12 min", notes: "Toss with oil, shake halfway", cat: "veggies" },
   { name: "Brussels Sprouts", temp: "375°F", time: "12–18 min", notes: "Halve them", cat: "veggies" },
   { name: "Asparagus", temp: "400°F", time: "6–9 min", notes: "Toss with oil", cat: "veggies" },
   { name: "Sweet Potato Fries", temp: "375–400°F", time: "12–18 min", notes: "Shake twice", cat: "veggies" },
+  { name: "Cauliflower Florets", temp: "375°F", time: "10–15 min", notes: "Toss with spices", cat: "veggies" },
+  { name: "Green Beans", temp: "375–400°F", time: "8–12 min", notes: "Shake halfway", cat: "veggies" },
+  { name: "Zucchini Slices", temp: "400°F", time: "8–12 min", notes: "Light oil", cat: "veggies" },
   { name: "Frozen French Fries", temp: "400°F", time: "12–18 min", notes: "Shake every 5 min", cat: "frozen" },
   { name: "Frozen Chicken Nuggets", temp: "400°F", time: "10–12 min", notes: "Shake halfway", cat: "frozen" },
   { name: "Frozen Mozzarella Sticks", temp: "380–400°F", time: "6–8 min", notes: "Watch carefully", cat: "frozen" },
-  { name: "Salmon Fillet", temp: "380–400°F", time: "8–12 min", notes: "No flip needed • 145°F", cat: "seafood" },
+  { name: "Frozen Onion Rings", temp: "380°F", time: "8–10 min", notes: "Shake halfway", cat: "frozen" },
+  { name: "Salmon Fillet", temp: "380–400°F", time: "8–12 min", notes: "No flip • 145°F", cat: "seafood" },
   { name: "Shrimp", temp: "400°F", time: "5–8 min", notes: "Shake once", cat: "seafood" },
-  { name: "Bacon", temp: "350–400°F", time: "7–10 min", notes: "No flip needed", cat: "other" },
-  { name: "Steak (1-inch)", temp: "400°F", time: "8–14 min", notes: "Flip halfway • Rest 5 min", cat: "other" },
-  { name: "Burgers", temp: "370–375°F", time: "10–14 min", notes: "Flip halfway", cat: "other" },
+  { name: "Cod or White Fish", temp: "380°F", time: "8–12 min", notes: "Check early", cat: "seafood" },
+  { name: "Steak (1-inch)", temp: "400°F", time: "8–14 min", notes: "Flip halfway • Rest 5 min", cat: "beef" },
+  { name: "Steak Bites", temp: "400°F", time: "6–10 min", notes: "Shake halfway", cat: "beef" },
+  { name: "Burgers", temp: "370–375°F", time: "10–14 min", notes: "Flip halfway", cat: "beef" },
+  { name: "Bacon", temp: "350–400°F", time: "7–10 min", notes: "No flip needed", cat: "pork" },
+  { name: "Pork Chops (1-inch)", temp: "380–400°F", time: "12–16 min", notes: "Flip halfway • 145°F", cat: "pork" },
+  { name: "Sausage Links", temp: "380°F", time: "10–14 min", notes: "Shake halfway", cat: "pork" },
   { name: "Baked Potato", temp: "400°F", time: "35–45 min", notes: "Pierce skin", cat: "veggies" },
-  { name: "Cauliflower Florets", temp: "375°F", time: "10–15 min", notes: "Toss with spices", cat: "veggies" }
+  { name: "Hard-Boiled Eggs", temp: "270°F", time: "15–17 min", notes: "Ice bath after", cat: "other" },
+  { name: "Tofu Cubes", temp: "400°F", time: "12–15 min", notes: "Press first", cat: "other" },
+  { name: "Chickpeas (canned)", temp: "400°F", time: "12–18 min", notes: "Dry well, shake", cat: "other" }
 ];
 
 const tbody = document.querySelector("#foodTable tbody");
